@@ -1,0 +1,26 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: {{.Values.deployment.appname}}
+  namespace: {{.Values.deployment.projectname}}
+spec:
+  selector:
+    app: {{.Values.deployment.name}}
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: Rolling
+    rolling:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: {{.Values.deployment.name}}
+    spec:
+      containers:
+        - name: {{.Values.deployment.name}}
+          image: >-
+            docker.io/rockettcs/chanu:{{.Values.deployment.tag}}
+          ports:
+            - containerPort: {{.Values.deployment.port}}

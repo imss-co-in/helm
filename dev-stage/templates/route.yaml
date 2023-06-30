@@ -1,0 +1,17 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: {{.Values.route.appname}}
+  namespace: {{.Values.route.projectname}}
+spec:
+  host: {{.Values.route.appname}}-{{.Values.route.projectname}}.apps.ocp4.imss.com
+  to:
+    kind: Service
+    name: {{.Values.route.appname}}
+    weight: 100
+  port:
+    targetPort: {{.Values.route.port}}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
