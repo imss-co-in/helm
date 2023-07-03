@@ -7,7 +7,7 @@ deployment:
  name: chanu
  tag: 3
  port: 8080
- imagename: docker.io/rockettcs/chanu:3 
+ imagename: docker.io/rockettcs/chanu:4
 
 
 service:
