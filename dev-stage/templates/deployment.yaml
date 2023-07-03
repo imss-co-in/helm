@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
         - name: {{.Values.deployment.name}}
-          image: {{ .Values.deployment.registry_name }}/{{ .Values.deployment.registry_org }}/{{ .Values.deployment.image_name }}:{{ .Values.deployment.image_tag }}            
+          image: {{.Values.deployment.imagename}}            
           ports:
             - containerPort: {{.Values.deployment.port}}
