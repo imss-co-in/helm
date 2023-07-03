@@ -20,7 +20,6 @@ spec:
     spec:
       containers:
         - name: {{.Values.deployment.name}}
-          image: >-
-            docker.io/rockettcs/chanu:{{.Values.deployment.tag}}
+          image: {{ .Values.deployment.registry_name }}/{{ .Values.deployment.registry_org }}/{{ .Values.deployment.image_name }}:{{ .Values.deployment.image_tag }}            
           ports:
             - containerPort: {{.Values.deployment.port}}
